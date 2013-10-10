@@ -15,8 +15,8 @@
  -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.1.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+       xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
     <description>
         Maybe one of the most simple Spring Batch Job Defintions,
@@ -28,12 +28,12 @@
         inline xmlns, otherwise it would look like 
         'batch:job, batch:step, etc.' 
     -->
-    <job id="simpleTaskletStepJob" xmlns="http://www.springframework.org/schema/batch">
+    <job id="simpleTaskletStepJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
         <step id="simpleTaskletStep">
-            <tasklet ref="simpleTasklet" />
+            <batchlet ref="simpleBatchlet" />
         </step>
     </job>
 
-    <bean id="simpleTasklet" class="de.langmi.spring.batch.examples.basics.taskletstep.SimpleTaskletStep" />
+    <bean id="simpleBatchlet" class="de.langmi.spring.batch.examples.basics.jsr.batchlet.SimpleBatchlet" />
 
 </beans>
