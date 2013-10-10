@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.langmi.spring.batch.examples.basics.taskletstep;
+package de.langmi.spring.batch.examples.basics.batchletstep;
 
+import de.langmi.spring.batch.examples.basics.batchlet.SimpleBatchlet;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import javax.batch.api.Batchlet;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -30,16 +32,16 @@ import org.springframework.batch.repeat.RepeatStatus;
  * @author Michael R. Lange <michael.r.lange@langmi.de>
 * @see <a href="http://stackoverflow.com/questions/1119385/junit-test-for-system-out-println">JUnit test for system.out.println</a>
  */
-public class SimpleTaskletStepTest {
+public class SimpleBatchletStepTest {
 
     /** Stream for catching System.out. */
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final Tasklet tasklet = new SimpleTaskletStep();
+    private final Batchlet batchlet = new SimpleBatchlet();
 
     @Test
     public void testExecute() throws Exception {
         // run the taskletStep, no need for contexts here
-        assertEquals(RepeatStatus.FINISHED, tasklet.execute(null, null));
+        assertEquals("done", batchlet.process());
         // assert sysoutput
         assertEquals("Hello World!", outContent.toString());
     }

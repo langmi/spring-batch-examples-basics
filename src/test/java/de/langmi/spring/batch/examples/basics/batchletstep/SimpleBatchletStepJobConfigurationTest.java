@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.langmi.spring.batch.examples.basics.taskletstep;
+package de.langmi.spring.batch.examples.basics.batchletstep;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -31,10 +31,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Michael R. Lange <michael.r.lange@langmi.de> 
  */
 @ContextConfiguration(locations = {
-    "classpath*:spring/batch/job/simple-taskletstep-job.xml",
+    "classpath*:spring/batch/job/simple-batchletstep-job.xml",
     "classpath*:spring/batch/setup/**/*.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class SimpleTaskletStepJobConfigurationTest {
+public class SimpleBatchletStepJobConfigurationTest {
 
     /** JobLauncherTestUtils Bean. */
     @Autowired

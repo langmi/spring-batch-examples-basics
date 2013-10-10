@@ -20,20 +20,18 @@
 
     <description>
         Maybe one of the most simple Spring Batch Job Defintions,
-        contains only one TaskletStep.
-        
-        See http://static.springsource.org/spring-batch/reference/html/configureStep.html#taskletStep
+        contains only one Batchlet.
     </description>
     <!-- 
         inline xmlns, otherwise it would look like 
         'batch:job, batch:step, etc.' 
     -->
-    <job id="simpleTaskletStepJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
-        <step id="simpleTaskletStep">
+    <job id="simpleBatchletStepJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+        <step id="simpleBatchletStep">
             <batchlet ref="simpleBatchlet" />
         </step>
     </job>
 
-    <bean id="simpleBatchlet" class="de.langmi.spring.batch.examples.basics.jsr.batchlet.SimpleBatchlet" />
+    <bean id="simpleBatchlet" class="de.langmi.spring.batch.examples.basics.batchlet.SimpleBatchlet" />
 
 </beans>

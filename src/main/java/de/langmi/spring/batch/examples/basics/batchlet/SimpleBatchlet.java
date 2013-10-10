@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.langmi.spring.batch.examples.basics.jsr.batchlet;
+package de.langmi.spring.batch.examples.basics.batchlet;
 
 import javax.batch.api.Batchlet;
 
@@ -29,7 +29,7 @@ public class SimpleBatchlet implements Batchlet {
         // why not using println? because it makes testing harder, *nix and
         // windows think different about new line as in \n vs \r\n
         System.out.print("Hello World!");
-        return "anything";
+        return "done";
     }
 
     @Override
