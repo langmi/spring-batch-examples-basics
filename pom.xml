@@ -74,7 +74,7 @@
     <properties>
         <!-- general project settings -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.java.version>1.6</project.java.version>
+        <project.java.version>1.7</project.java.version>
         <!-- development settings for maven-compiler-plugin -->
         <maven.compiler.debug>true</maven.compiler.debug>
         <maven.compiler.optimize>false</maven.compiler.optimize>
