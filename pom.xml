@@ -82,7 +82,7 @@
         <!-- forkmode for the surefire plugin, can be overridden with -DreuseForks=... -->
         <reuseForks>false</reuseForks>
         <!-- often used dependency version data -->
-        <spring.batch.version>2.1.8.RELEASE</spring.batch.version>
+        <spring.batch.version>2.2.1.RELEASE</spring.batch.version>
         <spring.framework.version>3.1.0.RELEASE</spring.framework.version>
         <slf4j.version>1.7.5</slf4j.version>
     </properties>
