@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.langmi.spring.batch.examples.basics.taskletstep;
+package de.langmi.spring.batch.examples.basics.taskletstep.configstyles;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -28,10 +28,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Michael R. Pralow <me@michael-pralow.de> 
  */
 @ContextConfiguration(locations = {
-    "classpath*:spring/batch/job/tasklet/simple-taskletstep-job.xml",
+    "classpath*:spring/batch/job/tasklet/config-styles/simple-taskletstep-job-config-style-1.xml",
     "classpath*:spring/batch/setup/**/*.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class SimpleTaskletStepJobConfigurationTest {
+public class SimpleTaskletStepJobStyleOneConfigurationTest {
 
     /** JobLauncherTestUtils Bean. */
     @Autowired
