@@ -1,6 +1,4 @@
-/**
- * Copyright 2012 Michael R. Lange <michael.r.lange@langmi.de>.
- *
+/*
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,32 +13,32 @@
  */
 package de.langmi.spring.batch.examples.basics.taskletstep;
 
-import de.langmi.spring.batch.examples.basics.tasklet.SimpleTasklet;
+import de.langmi.spring.batch.examples.basics.tasklet.CustomTasklet;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 
 /**
  * Simple test for {@link SimpleTaskletStep}.
  *
- * @author Michael R. Lange <michael.r.lange@langmi.de>
-* @see <a href="http://stackoverflow.com/questions/1119385/junit-test-for-system-out-println">JUnit test for system.out.println</a>
+ * @author Michael R. Pralow <me@michael-pralow.de>
+ * @see <a href="http://stackoverflow.com/questions/1119385/junit-test-for-system-out-println">JUnit test for system.out.println</a>
  */
-public class SimpleTaskletStepTest {
+public class CustomTaskletStepTest {
 
     /** Stream for catching System.out. */
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final Tasklet tasklet = new SimpleTasklet();
+    private CustomTasklet tasklet = new CustomTasklet();
 
     @Test
     public void testExecute() throws Exception {
+        
         // run the taskletStep, no need for contexts here
-        assertEquals(RepeatStatus.FINISHED, tasklet.execute(null, null));
+        assertEquals(RepeatStatus.FINISHED, tasklet.customMethod());
         // assert sysoutput
         assertEquals("Hello World!", outContent.toString());
     }

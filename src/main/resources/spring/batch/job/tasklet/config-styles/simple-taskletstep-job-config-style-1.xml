@@ -37,11 +37,9 @@
         <step id="simpleTaskletStep">
             <tasklet>
                 <bean xmlns="http://www.springframework.org/schema/beans" 
-                      class="de.langmi.spring.batch.examples.basics.taskletstep.SimpleTaskletStep" />
+                      class="de.langmi.spring.batch.examples.basics.tasklet.SimpleTasklet" />
             </tasklet>
         </step>
     </job>
-
-    <!--<bean id="simpleTasklet" class="de.langmi.spring.batch.examples.basics.taskletstep.SimpleTaskletStep" />-->
 
 </beans>

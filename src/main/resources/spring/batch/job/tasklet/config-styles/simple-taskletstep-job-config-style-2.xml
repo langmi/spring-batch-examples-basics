@@ -39,6 +39,6 @@
         </step>
     </job>
 
-    <bean id="simpleTasklet" class="de.langmi.spring.batch.examples.basics.taskletstep.SimpleTaskletStep" />
+    <bean id="simpleTasklet" class="de.langmi.spring.batch.examples.basics.tasklet.SimpleTasklet" />
 
 </beans>

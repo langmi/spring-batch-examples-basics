@@ -20,21 +20,13 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
     <beans:description>
-        Maybe one of the most simple Spring Batch Job Defintions,
-        contains only one TaskletStep.
-        
-        See http://docs.spring.io/spring-batch/2.2.x/reference/html/configureStep.html#taskletStep
-        
-        explaining some "magic"
-        * since version 2.1.9 nested bean definition is allowed for tasklets, see https://jira.springsource.org/browse/BATCH-1834 
-        * this xml config works without referencing the namespaces directly
-        * for other config styles see the other job xmls in this project
+        Example for using a custom tasklet which works without implementing the tasklet interface.
     </beans:description>
 
-    <job id="simpleTaskletStepJob">
-        <step id="simpleTaskletStep">
-            <tasklet>
-                <beans:bean class="de.langmi.spring.batch.examples.basics.tasklet.SimpleTasklet" />
+    <job id="customTaskletStepJob">
+        <step id="customTaskletStep">
+            <tasklet method="customMethod">
+                <beans:bean class="de.langmi.spring.batch.examples.basics.tasklet.CustomTasklet" />
             </tasklet>
         </step>
     </job>
