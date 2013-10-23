@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.langmi.spring.batch.examples.basics.taskletstep.configstyles;
+package de.langmi.spring.batch.examples.basics.taskletstep.jobruns;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -32,10 +32,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Michael R. Pralow <me@michael-pralow.de>
  */
 @ContextConfiguration(locations = {
-    "classpath*:spring/batch/job/tasklet/config-styles/simple-taskletstep-job-config-style-1.xml",
-    "classpath*:spring/batch/setup/**/*.xml"})
+    "classpath:spring/batch/job/tasklet/config-styles/simple-taskletstep-job-config-style-3.xml",
+    "classpath:spring/batch/setup/test/job-test-context.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class SimpleTaskletStepJobStyleOneConfigurationTest {
+public class SimpleTaskletStepJobStyleThirdConfigurationTest {
 
     /**
      * Stream for catching System.out.

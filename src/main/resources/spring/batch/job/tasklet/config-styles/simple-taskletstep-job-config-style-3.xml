@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright 2011 Michael R. Lange <michael.r.lange@langmi.de>.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <description>
+        Maybe one of the most simple Spring Batch Job Defintions,
+        contains only one TaskletStep.
+        
+        See http://docs.spring.io/spring-batch/2.2.x/reference/html/configureStep.html#taskletStep
+        
+        explaining some "magic"
+        * works without nested tasklet configuration by referencing the bean
+        * this xml config works without "beans:beans" etc. by just referencing the namespaces directly and setting the beans namespace as default
+        * for other config styles see the other job xmls in this project
+        * uses spring xml import to reduce setup amount (no need to name all xml, just this one)
+    </description>
+    
+    <import resource="classpath:/spring/batch/setup/job-context.xml" />
+    <import resource="classpath:/spring/batch/setup/job-database.xml" />
+
+    <!-- 
+        inline xmlns, otherwise it would look like 
+        'batch:job, batch:step, etc.' 
+    -->
+    <job id="simpleTaskletStepJob" xmlns="http://www.springframework.org/schema/batch">
+        <step id="simpleTaskletStep">
+            <tasklet ref="simpleTasklet" />
+        </step>
+    </job>
+
+    <bean id="simpleTasklet" class="de.langmi.spring.batch.examples.basics.tasklet.SimpleTasklet" />
+
+</beans>
