@@ -26,32 +26,37 @@ import org.springframework.batch.repeat.RepeatStatus;
  * Simple test for {@link SimpleTaskletStep}.
  *
  * @author Michael R. Pralow <me@michael-pralow.de>
- * @see <a href="http://stackoverflow.com/questions/1119385/junit-test-for-system-out-println">JUnit test for system.out.println</a>
+ * @see <a
+ * href="http://stackoverflow.com/questions/1119385/junit-test-for-system-out-println">JUnit
+ * test for system.out.println</a>
  */
 public class CustomTaskletStepTest {
 
-    /** Stream for catching System.out. */
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    /**
+     * Stream for catching System.out.
+     */
+    private final ByteArrayOutputStream newSysOut = new ByteArrayOutputStream();
+    private PrintStream oldSysOut;
     private CustomTasklet tasklet = new CustomTasklet();
 
     @Test
     public void testExecute() throws Exception {
-        
         // run the taskletStep, no need for contexts here
         assertEquals(RepeatStatus.FINISHED, tasklet.customMethod());
         // assert sysoutput
-        assertEquals("Hello World!", outContent.toString());
+        assertEquals("Hello World!", newSysOut.toString());
     }
 
     @Before
-    public void setUpStreams() {
-        // catch system out
-        System.setOut(new PrintStream(outContent));
+    public void setUp() {
+        // catch and set new system out
+        oldSysOut = System.out;
+        System.setOut(new PrintStream(newSysOut));
     }
 
     @After
-    public void cleanUpStreams() {
+    public void tearDown() {
         // reset JVM standard
-        System.setOut(null);
+        System.setOut(oldSysOut);
     }
 }
