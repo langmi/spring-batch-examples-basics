@@ -15,8 +15,8 @@
  -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <description>
         Maybe one of the most simple Spring Batch Job Defintions,
@@ -25,7 +25,8 @@
         See http://docs.spring.io/spring-batch/2.2.x/reference/html/configureStep.html#taskletStep
         
         explaining some "magic"
-        * works without nested tasklet configuration by referencing the bean
+        * no namespace version needed for spring dependencies, see http://stackoverflow.com/questions/9197141/spring-config-files-and-specifying-schema-versions
+        * since version 2.1.9 nested bean definition is allowed for tasklets, see https://jira.springsource.org/browse/BATCH-1834 
         * this xml config works without "beans:beans" etc. by just referencing the namespaces directly and setting the beans namespace as default
         * for other config styles see the other job xmls in this project
     </description>
@@ -35,10 +36,11 @@
     -->
     <job id="simpleTaskletStepJob" xmlns="http://www.springframework.org/schema/batch">
         <step id="simpleTaskletStep">
-            <tasklet ref="simpleTasklet" />
+            <tasklet>
+                <bean xmlns="http://www.springframework.org/schema/beans" 
+                      class="de.langmi.spring.batch.examples.basics.tasklet.SimpleTasklet" />
+            </tasklet>
         </step>
     </job>
-
-    <bean id="simpleTasklet" class="de.langmi.spring.batch.examples.basics.tasklet.SimpleTasklet" />
 
 </beans>

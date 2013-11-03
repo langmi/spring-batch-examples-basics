@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    Copyright 2011 Michael R. Lange <michael.r.lange@langmi.de>.
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
@@ -20,25 +19,29 @@
 
     <description>
         Maybe one of the most simple Spring Batch Job Defintions,
-        contains only one TaskletStep.
+        contains only one TaskletStep and simple infrastructure beans.
         
         See http://docs.spring.io/spring-batch/2.2.x/reference/html/configureStep.html#taskletStep
         
         explaining some "magic"
-        * works without nested tasklet configuration by referencing the bean
-        * this xml config works without "beans:beans" etc. by just referencing the namespaces directly and setting the beans namespace as default
+        * since version 2.1.9 nested bean definition is allowed for tasklets, see https://jira.springsource.org/browse/BATCH-1834 
+        * this xml config works without referencing the namespaces directly
         * for other config styles see the other job xmls in this project
+        * 
     </description>
-    <!-- 
-        inline xmlns, otherwise it would look like 
-        'batch:job, batch:step, etc.' 
-    -->
-    <job id="simpleTaskletStepJob" xmlns="http://www.springframework.org/schema/batch">
-        <step id="simpleTaskletStep">
-            <tasklet ref="simpleTasklet" />
+
+    <job id="job1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+        <step id="step1" next="step2">
+            <batchlet ref="batchlet" />
         </step>
     </job>
 
-    <bean id="simpleTasklet" class="de.langmi.spring.batch.examples.basics.tasklet.SimpleTasklet" />
+    <bean id="transactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager"/>
+
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+        <property name="jobRepository" ref="jobRepository"/>
+    </bean>
+
+    <bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean"/>
 
 </beans>
