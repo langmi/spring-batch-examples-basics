@@ -24,7 +24,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Example for a simple Job with JavaConfig.
+ * Example for a simple Job with JavaConfig. The autowired {@link JobBuilderFactory} and
+ * {@link StepBuilderFactory} are automatically added to the spring context when using
+ * the {@link EnableBatchProcessing} annotation.
  *
  * @author Michael R. Pralow <me@michael-pralow.de>
  */
@@ -37,13 +39,13 @@ public class SimpleJavaConfigJob {
     private StepBuilderFactory steps;
 
     @Bean
-    public Job simpleJob() throws Exception {
-        SimpleJobBuilder builder = jobs.get("test").start(step1());
+    public Job job() throws Exception {
+        SimpleJobBuilder builder = jobs.get("job1").start(step());
         return builder.build();
     }
 
     @Bean
-    protected Step step1() throws Exception {
+    protected Step step() throws Exception {
         return steps.get("step1").tasklet(new SimpleTasklet()).build();
     }
 
