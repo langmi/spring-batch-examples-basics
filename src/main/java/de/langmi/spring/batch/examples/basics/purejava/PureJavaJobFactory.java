@@ -25,7 +25,7 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.transaction.PlatformTransactionManager;
 
 /**
- * Job definition with pure Java. For this example i go without any re-usable
+ * Job definition with pure Java. This example is designed without any re-usable
  * code.
  *
  * @author Michael R. Pralow <me@michael-pralow.de>
