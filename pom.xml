@@ -249,12 +249,6 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.framework.version}</version>
         </dependency>
-        <!-- Java Batch dependencies -->
-        <dependency>
-            <groupId>javax.batch</groupId>
-            <artifactId>javax.batch-api</artifactId>
-            <version>1.0</version>
-        </dependency>
         <!-- Spring Batch dependencies -->
         <dependency>
             <groupId>org.springframework.batch</groupId>
