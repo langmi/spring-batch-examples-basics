@@ -81,15 +81,9 @@ public class JobTransactionManagerTest {
 
     private void testDataSourceWithConnection(DataSource ds) throws Exception {
         assertNotNull(ds);
-        Connection con = null;
-        try {
-            con = ds.getConnection();
+        try (Connection con = ds.getConnection()) {
             ResultSet result = con.createStatement().executeQuery("SELECT 1 FROM INFORMATION_SCHEMA.SYSTEM_USERS");
             assertNotNull(result);
-        } finally {
-            if (con != null) {
-                con.close();
-            }
         }
     }
 }
