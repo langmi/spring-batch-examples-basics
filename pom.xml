@@ -83,7 +83,7 @@
         <!-- often used dependency version data -->
         <spring.batch.version>2.2.4.RELEASE</spring.batch.version>
         <spring.framework.version>4.0.1.RELEASE</spring.framework.version>
-        <slf4j.version>1.7.5</slf4j.version>
+        <slf4j.version>1.7.6</slf4j.version>
     </properties>
 
     <build>
